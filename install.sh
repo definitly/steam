@@ -78,7 +78,8 @@ sudo chroot /compat/ubuntu locale-gen en_US.UTF-8
 sudo chroot /compat/ubuntu locale-gen ru_RU.UTF-8
 sudo chroot /compat/ubuntu /bin/dbus-uuidgen --ensure
 
-sudo du -a /compat/ubuntu/usr/share/ca-certificates | sed 's/\/compat\/ubuntu\/usr\/share\/ca-certificates\///'   >>    /compat/ubuntu/etc/ca-certificates.conf
+du -a /compat/ubuntu/usr/share/ca-certificates | sed 's/\/compat\/ubuntu\/usr\/share\/ca-certificates\///' |  awk '{print $2}'  >>    ca-certificates.conf
+sudo cp     ca-certificates.conf   /compat/ubuntu/etc
 sudo mkdir  /compat/ubuntu/tmp
 sudo chroot /compat/ubuntu update-ca-certificates
 sudo chroot /compat/ubuntu update-ca-certificates
