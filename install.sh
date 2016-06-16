@@ -1,9 +1,27 @@
 #!/bin/sh
 
 MASTER_SITES=http://de.archive.ubuntu.com/ubuntu/
-mkdir ubuntu
-mkdir deb
-mkdir tar  
+
+
+if ! [ -d  "ubuntu"  ]; then
+
+           mkdir -p  ubuntu
+
+       fi
+
+
+if ! [ -d  "deb"  ]; then
+
+           mkdir -p  deb
+
+       fi
+
+if ! [ -d  "tar"  ]; then
+
+           mkdir -p  tar
+
+       fi
+
 
                 for BIN_DISTFILES in $(cat listpackages);do
 
