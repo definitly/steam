@@ -74,7 +74,7 @@ sudo chroot ubuntu /usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loade
  >  ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache
 
 du -a /compat/ubuntu/usr/share/ca-certificates | sed 's/\/compat\/ubuntu\/usr\/share\/ca-certificates\///' |  awk '{print $2}' \
-  >>    ubuntu/etc/ca-certificates.conf
+ >>  ubuntu/etc/ca-certificates.conf
 
 sudo cp -R  ubuntu /compat
 sudo chroot /compat/ubuntu locale-gen en_US.UTF-8
