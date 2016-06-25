@@ -95,11 +95,12 @@ doas chroot ubuntu /usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loade
 du -a ubuntu/usr/share/ca-certificates | sed 's/ubuntu\/usr\/share\/ca-certificates\///' |  awk '{print $2}' \
  >>  ubuntu/etc/ca-certificates.conf
 
-doas cp -R  ubuntu /compat
-doas chroot /compat/ubuntu locale-gen en_US.UTF-8
-doas chroot /compat/ubuntu locale-gen ru_RU.UTF-8
-doas chroot /compat/ubuntu /bin/dbus-uuidgen --ensure
 
+doas chroot ubuntu locale-gen en_US.UTF-8
+doas chroot ubuntu locale-gen ru_RU.UTF-8
+doas chroot ubuntu /bin/dbus-uuidgen --ensure
+
+doas cp -R  ubuntu /compat
 doas mkdir  /compat/ubuntu/tmp
 doas chroot /compat/ubuntu update-ca-certificates
 doas chroot /compat/ubuntu update-ca-certificates
