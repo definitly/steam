@@ -89,18 +89,18 @@ ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1)       
 
 
 
-sudo chroot ubuntu /usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders \
+doas chroot ubuntu /usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders \
  >  ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache
 
 du -a ubuntu/usr/share/ca-certificates | sed 's/ubuntu\/usr\/share\/ca-certificates\///' |  awk '{print $2}' \
  >>  ubuntu/etc/ca-certificates.conf
 
-sudo cp -R  ubuntu /compat
-sudo chroot /compat/ubuntu locale-gen en_US.UTF-8
-sudo chroot /compat/ubuntu locale-gen ru_RU.UTF-8
-sudo chroot /compat/ubuntu /bin/dbus-uuidgen --ensure
+doas cp -R  ubuntu /compat
+doas chroot /compat/ubuntu locale-gen en_US.UTF-8
+doas chroot /compat/ubuntu locale-gen ru_RU.UTF-8
+doas chroot /compat/ubuntu /bin/dbus-uuidgen --ensure
 
-sudo mkdir  /compat/ubuntu/tmp
-sudo chroot /compat/ubuntu update-ca-certificates
-sudo chroot /compat/ubuntu update-ca-certificates
+doas mkdir  /compat/ubuntu/tmp
+doas chroot /compat/ubuntu update-ca-certificates
+doas chroot /compat/ubuntu update-ca-certificates
 
