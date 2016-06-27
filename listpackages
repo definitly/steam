@@ -8,6 +8,7 @@ pool/main/libx/libxtst/libxtst6_1.2.2-1_i386.deb
 pool/main/libx/libxfixes/libxfixes3_5.0.1-1ubuntu1_i386.deb     
 pool/main/libx/libxrandr/libxrandr2_1.4.2-1_i386.deb            
 pool/main/libx/libxrender/libxrender1_0.9.8-1_i386.deb
+pool/main/libx/libxpm/libxpm4_3.5.10-1_i386.deb
 pool/main/x/xft/libxft2_2.2.0-3ubuntu2_i386.deb  
 pool/main/g/gtk+2.0/libgtk2.0-0_2.24.23-0ubuntu1_i386.deb 
 pool/main/libx/libxinerama/libxinerama1_1.1.3-1_i386.deb
