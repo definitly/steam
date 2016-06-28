@@ -68,7 +68,7 @@ cp       tar/libflashsupport.so            ubuntu/usr/lib
 ln -s    libudev.so.1.3.5                  ubuntu/lib/i386-linux-gnu/libudev.so.0
 ln -s    libcurl.so.4.3.0                  ubuntu/usr/lib/i386-linux-gnu/libcurl.so.5 
 ln -s    bash                              ubuntu/bin/sh
-cp -R    certs                             ubuntu/etc/ssl
+
 
 
 #cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1) ubuntu/usr/lib
