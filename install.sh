@@ -72,32 +72,48 @@ ln -s    bash                              ubuntu/bin/sh
 
   if ! [ -z "$(dmesg | grep radeon)" ] ; then 
 
-echo 'RADEON'
+        echo 'RADEON'
 
-   cd tar &&  fetch   http://pkg.freebsd.org/freebsd:11:x86:64/latest/All/linux-c6-dri-11.0.7.txz && cd ../
+   
+              if ! [ -f "tar/linux-c6-dri-11.0.7.txz" ]; then 
 
-   tar xf tar/linux-c6-dri-11.0.7.txz  
-   cp -R tar/compat/linux/usr/lib             ubuntu/usr
+                      cd tar &&  fetch   http://pkg.freebsd.org/freebsd:11:x86:64/latest/All/linux-c6-dri-11.0.7.txz && cd ../
 
-   ln -s libtxc_dxtn_s2tc.so.0                ubuntu/usr/lib/i386-linux-gnu/libtxc_dxtn.so 
+               fi
 
-     else
+                if ! [ -f "tar/mesa-private-llvm-3.6.2-1.el6.i686.rpm" ]; then 
 
-cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1) ubuntu/usr/lib
-cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-glcore) ubuntu/usr/lib
-cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-tls) ubuntu/usr/lib
-ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1)              ubuntu/usr/lib/libGL.so.1
+                     cd tar && fetch ftp://195.220.108.108/linux/centos/6.8/os/i386/Packages/mesa-private-llvm-3.6.2-1.el6.i686.rpm
+                     cd ..
+                  fi
+
+              cd tar &&  rpm2cpio.pl   mesa-private-llvm-3.6.2-1.el6.i686.rpm | cpio -idmv 
+          cd ..
+          cp tar/usr/lib/libLLVM-3.6-mesa.so               ubuntu/usr/lib
+
+
+                 tar xf tar/linux-c6-dri-11.0.7.txz   -C    tar  
+                 cp -R tar/compat/linux/usr/lib             ubuntu/usr
+                 ln -s libtxc_dxtn_s2tc.so.0                ubuntu/usr/lib/i386-linux-gnu/libtxc_dxtn.so 
+
+        else
+
+                 cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1) ubuntu/usr/lib
+                 cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-glcore) ubuntu/usr/lib
+                 cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-tls) ubuntu/usr/lib
+                 ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1)              ubuntu/usr/lib/libGL.so.1
 
    fi 
  
 
       if ! [ -f "tar/linux-skype_oss_wrapper-0.1.1.txz" ]; then 
 
-     cd tar && fetch http://pkg.freebsd.org/freebsd:11:x86:64/latest/All/linux-skype_oss_wrapper-0.1.1.txz && cd ../
+         cd tar && fetch http://pkg.freebsd.org/freebsd:11:x86:64/latest/All/linux-skype_oss_wrapper-0.1.1.txz && cd ../
 
         fi
 
          tar xf tar/linux-skype_oss_wrapper-0.1.1.txz  -C ubuntu/usr/lib    -s ",/.*/,,g" "*/libpulse.so.0"
+
 
 
 
