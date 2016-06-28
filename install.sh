@@ -71,11 +71,11 @@ ln -s    bash                              ubuntu/bin/sh
 cp -R    certs                             ubuntu/etc/ssl
 
 
-cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1) ubuntu/usr/lib
-cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-glcore) ubuntu/usr/lib
-cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-tls) ubuntu/usr/lib
+#cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1) ubuntu/usr/lib
+#cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-glcore) ubuntu/usr/lib
+#cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-tls) ubuntu/usr/lib
 
-ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1)              ubuntu/usr/lib/libGL.so.1
+#ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1)              ubuntu/usr/lib/libGL.so.1
 
  
        if ! [ -f "tar/linux-skype_oss_wrapper-0.1.1.txz" ]; then 
@@ -96,11 +96,12 @@ du -a ubuntu/usr/share/ca-certificates | sed 's/ubuntu\/usr\/share\/ca-certifica
  >>  ubuntu/etc/ca-certificates.conf
 
 
-doas chroot ubuntu locale-gen en_US.UTF-8
-doas chroot ubuntu locale-gen ru_RU.UTF-8
-doas chroot ubuntu /bin/dbus-uuidgen --ensure
-
 doas cp -R  ubuntu /compat
+doas chroot /compat/ubuntu locale-gen en_US.UTF-8
+doas chroot /compat/ubuntu locale-gen ru_RU.UTF-8
+doas chroot /compat/ubuntu /bin/dbus-uuidgen --ensure
+
+
 doas mkdir  /compat/ubuntu/tmp
 doas chroot /compat/ubuntu update-ca-certificates
 doas chroot /compat/ubuntu update-ca-certificates
