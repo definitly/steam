@@ -68,11 +68,11 @@ EOF
                               if  [ -z "$(mount | grep linsysfs)" ]; then
        
                                   doas mount -t linsysfs linsys /compat/linux/sys
-                       
+
                                fi
 
                         doas chmod 1777 /compat/linux/var/run/shm
-                        
+                        doas chmod 1777 /compat/linux/tmp
 
                   fi
 
