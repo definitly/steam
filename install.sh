@@ -70,15 +70,22 @@ ln -s    libcurl.so.4.3.0                  ubuntu/usr/lib/i386-linux-gnu/libcurl
 ln -s    bash                              ubuntu/bin/sh
 
 
+  if ! [ -z "$(dmesg | grep radeon)" ] ; then 
 
-#cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1) ubuntu/usr/lib
-#cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-glcore) ubuntu/usr/lib
-#cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-tls) ubuntu/usr/lib
+echo 'RADEON'
+ln -s libtxc_dxtn_s2tc.so.0                ubuntu/usr/lib/i386-linux-gnu/libtxc_dxtn.so
 
-#ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1)              ubuntu/usr/lib/libGL.so.1
+     else
 
+cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1) ubuntu/usr/lib
+cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-glcore) ubuntu/usr/lib
+cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-tls) ubuntu/usr/lib
+ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1)              ubuntu/usr/lib/libGL.so.1
+
+   fi 
  
-       if ! [ -f "tar/linux-skype_oss_wrapper-0.1.1.txz" ]; then 
+
+      if ! [ -f "tar/linux-skype_oss_wrapper-0.1.1.txz" ]; then 
 
      cd tar && fetch http://pkg.freebsd.org/freebsd:11:x86:64/latest/All/linux-skype_oss_wrapper-0.1.1.txz && cd ../
 
