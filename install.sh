@@ -73,7 +73,13 @@ ln -s    bash                              ubuntu/bin/sh
   if ! [ -z "$(dmesg | grep radeon)" ] ; then 
 
 echo 'RADEON'
-ln -s libtxc_dxtn_s2tc.so.0                ubuntu/usr/lib/i386-linux-gnu/libtxc_dxtn.so
+
+   cd tar &&  fetch   http://pkg.freebsd.org/freebsd:11:x86:64/latest/All/linux-c6-dri-11.0.7.txz && cd ../
+
+   tar xf tar/linux-c6-dri-11.0.7.txz  
+   cp -R tar/compat/linux/usr/lib             ubuntu/usr
+
+   ln -s libtxc_dxtn_s2tc.so.0                ubuntu/usr/lib/i386-linux-gnu/libtxc_dxtn.so 
 
      else
 
