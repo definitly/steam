@@ -1,6 +1,7 @@
 #!/bin/sh
 
 MASTER_SITES=http://de.archive.ubuntu.com/ubuntu/
+RPM_SITES=http://mirror.centos.org/centos/6.8/os/x86_64/Packages/
 ubuntu=ubuntu_x86_64
 tar=tar_x86_64
 deb=deb_x86_64
@@ -23,6 +24,26 @@ if ! [ -d  "$tar"  ]; then
            mkdir -p  $tar
 
        fi
+
+            for RPM_DISTFILES in $(cat rpmlist);do
+
+                        if ! [ -f $tar/$(echo  $RPM_DISTFILES | rev | sed -r 's/\/.+//' | rev) ]; then
+         
+                       cd  $tar &&   fetch $RPM_SITES$RPM_DISTFILES
+                       cd ../
+ 
+                        fi 
+                 done
+
+
+            for RPM   in $(cat rpmlist); do
+                   
+                    rpm2cpio.pl   $tar/$(echo  $RPM | rev | sed -r 's/\/.+//' | rev) | cpio -idmv
+
+                 done
+
+
+
 
 
                 for BIN_DISTFILES in $(cat listpackages_x86_64);do
@@ -103,13 +124,14 @@ ln -s         ../lib/x86_64-linux-gnu/ld-2.19.so   $ubuntu/lib64/ld-linux-x86-64
                  tar xf $tar/linux-c6-dri-11.0.7.txz   -C    $tar  
                  cp -R  $tar/compat/linux/usr/lib            $ubuntu/usr
                  ln -s  libtxc_dxtn_s2tc.so.0                $ubuntu/usr/lib/i386-linux-gnu/libtxc_dxtn.so 
+                 ln -s  libtxc_dxtn_s2tc.so.0.0.0            $ubuntu/usr/lib/x86_64-linux-gnu/libtxc_dxtn.so
 
         else
 
                  cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1) $ubuntu/usr/lib
                  cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-glcore) $ubuntu/usr/lib
-                 cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-tls) $ubuntu/usr/lib
-                 ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so | head -2 | tail -n 1)              $ubuntu/usr/lib/libGL.so.1
+                 cp /compat/linux/usr/lib/$(ls /compat/linux/usr/lib/ | grep libnvidia-tls)  $ubuntu/usr/lib
+                 ln -s  $(ls /compat/linux/usr/lib/ | grep libGL.so   | head -2 | tail -n 1) $ubuntu/usr/lib/libGL.so.1
 
    fi 
  
