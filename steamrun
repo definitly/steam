@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ubuntu=ubuntu
 
    if ! [ -f $HOME/.asoundrc ]; then
 
@@ -40,12 +41,12 @@ EOF
              fi
 
 
-               if [ -d /compat/ubuntu/ ] ; then  
+               if [ -d /compat/$ubuntu/ ] ; then  
  
 
                            if  [ -z "$(mount | grep nullfs )" ]; then 
     
-                               doas mount -t nullfs /compat/ubuntu/ /compat/linux/
+                               doas mount -t nullfs /compat/$ubuntu/ /compat/linux/
 
                             fi
 
@@ -137,7 +138,7 @@ EOF
        fi
 
       
-   if ! [ -z  "$(mount | grep ubuntu)"  ] ; then  
+   if ! [ -z  "$(mount | grep $ubuntu)"  ] ; then  
   
        doas umount -f  /compat/linux/proc
        doas umount -f  /compat/linux/var/run/shm

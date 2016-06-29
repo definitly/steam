@@ -91,11 +91,11 @@ ln -s         ../lib/x86_64-linux-gnu/ld-2.19.so   $ubuntu/lib64/ld-linux-x86-64
 
                 if ! [ -f "$tar/mesa-private-llvm-3.6.2-1.el6.i686.rpm" ]; then 
 
-                     cd tar && fetch ftp://195.220.108.108/linux/centos/6.8/os/i386/Packages/mesa-private-llvm-3.6.2-1.el6.i686.rpm
+                     cd $tar && fetch ftp://195.220.108.108/linux/centos/6.8/os/i386/Packages/mesa-private-llvm-3.6.2-1.el6.i686.rpm
                      cd ..
                   fi
 
-              cd tar &&  rpm2cpio.pl   mesa-private-llvm-3.6.2-1.el6.i686.rpm | cpio -idmv 
+              cd $tar &&  rpm2cpio.pl   mesa-private-llvm-3.6.2-1.el6.i686.rpm | cpio -idmv 
           cd ..
           cp $tar/usr/lib/libLLVM-3.6-mesa.so               $ubuntu/usr/lib32
 
@@ -142,13 +142,13 @@ cp    -rf   ubuntu/usr/lib/i386-linux-gnu/*  $ubuntu/usr/lib32
 cp -rf      ubuntu/lib/i386-linux-gnu/*      $ubuntu/usr/lib32
 
 
-doas cp -R  $ubuntu /compat/ubuntu
-doas chroot /compat/ubuntu locale-gen en_US.UTF-8
-doas chroot /compat/ubuntu locale-gen ru_RU.UTF-8
-doas chroot /compat/ubuntu /bin/dbus-uuidgen --ensure
+doas cp -R  $ubuntu /compat/
+doas chroot /compat/$ubuntu locale-gen en_US.UTF-8
+doas chroot /compat/$ubuntu locale-gen ru_RU.UTF-8
+doas chroot /compat/$ubuntu /bin/dbus-uuidgen --ensure
 
 
-doas mkdir  /compat/ubuntu/tmp
-doas chroot /compat/ubuntu update-ca-certificates
-doas chroot /compat/ubuntu update-ca-certificates
+doas mkdir  /compat/$ubuntu/tmp
+doas chroot /compat/$ubuntu update-ca-certificates
+doas chroot /compat/$ubuntu update-ca-certificates
 

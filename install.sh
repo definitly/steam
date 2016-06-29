@@ -125,7 +125,7 @@ du -a ubuntu/usr/share/ca-certificates | sed 's/ubuntu\/usr\/share\/ca-certifica
  >>  ubuntu/etc/ca-certificates.conf
 
 
-#doas cp -R  ubuntu /compat
+doas cp -R  ubuntu /compat
 doas chroot /compat/ubuntu locale-gen en_US.UTF-8
 doas chroot /compat/ubuntu locale-gen ru_RU.UTF-8
 doas chroot /compat/ubuntu /bin/dbus-uuidgen --ensure
@@ -135,4 +135,4 @@ doas mkdir  /compat/ubuntu/tmp
 doas chroot /compat/ubuntu update-ca-certificates
 doas chroot /compat/ubuntu update-ca-certificates
 
-#doas cp -rf ubuntu/usr/lib/i386-linux-gnu/* /compat/ubuntu/usr/lib32
+
