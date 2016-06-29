@@ -37,8 +37,9 @@ if ! [ -d  "$tar"  ]; then
 
 
             for RPM   in $(cat rpmlist); do
-                   
-                    rpm2cpio.pl   $tar/$(echo  $RPM | rev | sed -r 's/\/.+//' | rev) | cpio -idmv
+                  
+             cd  $tar && rpm2cpio.pl   $(echo  $RPM | rev | sed -r 's/\/.+//' | rev) | cpio -idmv
+             cd ../
 
                  done
 
@@ -125,6 +126,15 @@ ln -s         ../lib/x86_64-linux-gnu/ld-2.19.so   $ubuntu/lib64/ld-linux-x86-64
                  cp -R  $tar/compat/linux/usr/lib            $ubuntu/usr
                  ln -s  libtxc_dxtn_s2tc.so.0                $ubuntu/usr/lib/i386-linux-gnu/libtxc_dxtn.so 
                  ln -s  libtxc_dxtn_s2tc.so.0.0.0            $ubuntu/usr/lib/x86_64-linux-gnu/libtxc_dxtn.so
+
+
+                 cp    -rf $tar/usr/lib64/*                  $ubuntu/usr/lib/x86_64-linux-gnu
+                 ln -s lib/x86_64-linux-gnu                  $ubuntu/usr/lib64
+
+
+
+
+
 
         else
 
