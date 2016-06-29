@@ -84,7 +84,17 @@ EOF
 
        fi
 
-       
+      
+     if ! [ -d  "$HOME/.steam/sdk64/"  ]; then
+
+           mkdir -p  $HOME/.steam/sdk64/
+
+       fi
+
+
+
+
+ 
 
   
       if  [ -f $HOME/.steam/steam/ubuntu12_32/steamwebhelper.bak ]; then
@@ -100,6 +110,14 @@ EOF
             ln -s    $HOME/.steam/steam/linux32/steamclient.so       $HOME/.steam/sdk32/steamclient.so
 
         fi
+
+       if ! [ -L "$HOME/.steam/sdk64/steamclient.so" ]; then
+
+            ln -s    $HOME/.steam/steam/linux64/steamclient.so       $HOME/.steam/sdk64/steamclient.so
+
+        fi
+
+
 
 
        # use the  variable $1 like this :   ./steamrun steam://run/440 
