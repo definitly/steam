@@ -168,9 +168,9 @@ du -a $ubuntu/usr/share/ca-certificates | sed "s/$ubuntu\/usr\/share\/ca-certifi
  >>  $ubuntu/etc/ca-certificates.conf
 
 mkdir -p $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
-cp  ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache  $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
-cp -R  ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders     $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
-cp    -rf   ubuntu/usr/lib/i386-linux-gnu/*  $ubuntu/usr/lib32
+cp          ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache  $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
+cp -R       ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders     $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
+cp -rf      ubuntu/usr/lib/i386-linux-gnu/*  $ubuntu/usr/lib32
 cp -rf      ubuntu/lib/i386-linux-gnu/*      $ubuntu/usr/lib32
 
 
