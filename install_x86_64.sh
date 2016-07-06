@@ -167,7 +167,7 @@ doas chroot $ubuntu /usr/lib32/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders \
 du -a $ubuntu/usr/share/ca-certificates | sed "s/$ubuntu\/usr\/share\/ca-certificates\///" |  awk '{print $2}' \
  >>  $ubuntu/etc/ca-certificates.conf
 
-mkdir -p $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
+mkdir -p    $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
 cp          ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache  $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
 cp -R       ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders     $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
 cp -rf      ubuntu/usr/lib/i386-linux-gnu/*  $ubuntu/usr/lib32
