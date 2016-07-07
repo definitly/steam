@@ -172,7 +172,7 @@ cp          ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache  $
 cp -R       ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders     $ubuntu/usr/lib/i386-linux-gnu/gdk-pixbuf-2.0/2.10.0/
 cp -rf      ubuntu/usr/lib/i386-linux-gnu/*  $ubuntu/usr/lib32
 cp -rf      ubuntu/lib/i386-linux-gnu/*      $ubuntu/usr/lib32
-
+rm          $ubuntu/bin/sh
 
 doas cp -R  $ubuntu /compat/
 doas chroot /compat/$ubuntu locale-gen en_US.UTF-8
