@@ -22,7 +22,8 @@ pool/main/libx/libxcb/libxcb-glx0_1.10-2ubuntu1_amd64.deb
 pool/main/libx/libxcb/libxcb-dri2-0_1.10-2ubuntu1_amd64.deb
 pool/main/libx/libxcb/libxcb-dri3-0_1.10-2ubuntu1_amd64.deb
 
-pool/main/n/ncurses/libtinfo5_5.9+20140118-1ubuntu1_amd64.deb
+
+pool/main/x/xdg-user-dirs/xdg-user-dirs_0.15-1ubuntu3_amd64.deb
 pool/main/x/xdg-utils/xdg-utils_1.1.0~rc1-2ubuntu7_all.deb
 pool/main/x/xft/libxft2_2.2.0-3ubuntu2_amd64.deb  
 pool/main/g/gtk+2.0/libgtk2.0-0_2.24.23-0ubuntu1_amd64.deb 
