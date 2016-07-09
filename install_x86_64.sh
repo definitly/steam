@@ -51,8 +51,8 @@ if ! [ -d  "$tar"  ]; then
 
                         if ! [ -f $deb/$(echo  $BIN_DISTFILES | rev | sed -r 's/\/.+//' | rev) ]; then
          
-                       cd  $deb &&   fetch $MASTER_SITES$BIN_DISTFILES
-                       cd ../
+                                 cd  $deb &&   fetch $MASTER_SITES$BIN_DISTFILES
+                                 cd ../
  
                         fi 
                  done
